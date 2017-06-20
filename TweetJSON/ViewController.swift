@@ -6,13 +6,14 @@
 //  Copyright © 2017 Andy Piper. All rights reserved.
 //
 
+// TODO: use Cocoapods
 // TODO: make get status options toggles
 // TODO: clear screen
 // TODO: share extension
 // TODO: refactor Tweet fetch code
 // TODO: syntax colouring
 // TODO: support user ID lookup as well
-// TODO: quick copy full JSON body
+// TODO: quick copy full JSON body to pasteboard
 
 import UIKit
 import TwitterKit
