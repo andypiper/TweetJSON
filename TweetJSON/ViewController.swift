@@ -6,7 +6,6 @@
 //  Copyright © 2017 Andy Piper. All rights reserved.
 //
 
-// TODO: use Cocoapods
 // TODO: make get status options toggles
 // TODO: clear screen
 // TODO: share extension
@@ -18,7 +17,7 @@
 import UIKit
 import TwitterKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: properties
     @IBOutlet weak var tweetID: UITextField!
@@ -26,25 +25,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tweetID.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
+        
     //MARK: actions
     @IBAction func queryButton(_ sender: Any) {
+        tweetID.resignFirstResponder()
         callApi()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == tweetID {
+            textField.resignFirstResponder()
+            callApi()
+            return false
+        }
+        return true
     }
     
     func callApi() {
-        self.tweetID.resignFirstResponder()
         
         // this all needs to be refactored into a separate function
         // should check for nil tweetID value
