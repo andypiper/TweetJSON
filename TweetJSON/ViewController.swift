@@ -16,6 +16,8 @@
 // TODO: syntax colour configuration
 // TODO: quick copy full JSON body to pasteboard
 
+// TODO: add Fastlane support
+
 import UIKit
 import TwitterKit
 import Highlightr
