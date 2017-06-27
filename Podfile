@@ -3,6 +3,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 pod 'TwitterKit'
+pod 'Highlightr'
 
 target 'TweetJSON' do
   

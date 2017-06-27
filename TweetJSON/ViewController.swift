@@ -7,15 +7,18 @@
 //
 
 // TODO: make get status options toggles
-// TODO: clear screen
-// TODO: share extension
-// TODO: refactor Tweet fetch code
-// TODO: syntax colouring
 // TODO: support user ID lookup as well
+// TODO: refactor Tweet fetch code
+
+// TODO: share extension
+
+// TODO: clear screen
+// TODO: syntax colour configuration
 // TODO: quick copy full JSON body to pasteboard
 
 import UIKit
 import TwitterKit
+import Highlightr
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -74,7 +77,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     print("json: \(json)") // debug, not really useful
                     let jsonObj = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
                     let jsonString = NSString(data: jsonObj, encoding: String.Encoding.utf8.rawValue)
-                    self.jsonBody.text = jsonString! as String
+                    
+                    let highlightr = Highlightr()
+                    highlightr?.setTheme(to: "github")
+                    let highlightedCode = highlightr?.highlight(jsonString! as String)
+                    
+                    self.jsonBody.attributedText = highlightedCode
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                     self.jsonBody.text = jsonError.localizedDescription
