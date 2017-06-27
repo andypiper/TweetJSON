@@ -1,6 +1,0 @@
-framework module Pods_TweetJSON {
-  umbrella header "Pods-TweetJSON-umbrella.h"
-
-  export *
-  module * { export * }
-}
