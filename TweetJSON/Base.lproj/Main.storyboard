@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="83"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-1P-d5c">
                                         <rect key="frame" x="0.0" y="91" width="50" height="34"/>
@@ -39,12 +39,11 @@
                                             <action selector="queryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IFP-TC-hYR"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" editable="NO" text="Ready to display response..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lJm-PJ-cFu">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" maximumZoomScale="3" editable="NO" text="Ready to display response..." translatesAutoresizingMaskIntoConstraints="NO" id="lJm-PJ-cFu">
                                         <rect key="frame" x="0.0" y="133" width="343" height="459"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
-                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
