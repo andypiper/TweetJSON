@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		244889D61F029B960034285B /* Twitter.blank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 244889D51F029B960034285B /* Twitter.blank.plist */; };
 		24B839AA1EF96ECE0096D6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B839A91EF96ECE0096D6B9 /* AppDelegate.swift */; };
 		24B839AC1EF96ECE0096D6B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B839AB1EF96ECE0096D6B9 /* ViewController.swift */; };
 		24B839AF1EF96ECE0096D6B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B839AD1EF96ECE0096D6B9 /* Main.storyboard */; };
@@ -45,6 +44,7 @@
 		1F381CA6F51453C89D88F6D0 /* Pods_TweetJSON_TweetJSONTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetJSON_TweetJSONTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231C1014EA4FB5C5959B2F97 /* libPods-TweetJSONUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetJSONUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244889D51F029B960034285B /* Twitter.blank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Twitter.blank.plist; sourceTree = "<group>"; };
+		24492B2D1F03054000C2E9E3 /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = SOURCE_ROOT; };
 		247011BC1F02B95500171E20 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		247011BD1F02B95500171E20 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		24B839A61EF96ECE0096D6B9 /* TweetJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +105,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24492B251F0304A200C2E9E3 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				24492B2D1F03054000C2E9E3 /* Fastfile */,
+			);
+			name = fastlane;
+			sourceTree = "<group>";
+		};
+		24492B261F0304B800C2E9E3 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				247011BC1F02B95500171E20 /* LICENSE */,
+				247011BD1F02B95500171E20 /* README.md */,
+			);
+			name = docs;
+			sourceTree = "<group>";
+		};
 		24B8399D1EF96ECE0096D6B9 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +147,8 @@
 		24B839A81EF96ECE0096D6B9 /* TweetJSON */ = {
 			isa = PBXGroup;
 			children = (
-				247011BC1F02B95500171E20 /* LICENSE */,
-				247011BD1F02B95500171E20 /* README.md */,
+				24492B261F0304B800C2E9E3 /* docs */,
+				24492B251F0304A200C2E9E3 /* fastlane */,
 				24B839A91EF96ECE0096D6B9 /* AppDelegate.swift */,
 				24B839B01EF96ECE0096D6B9 /* Assets.xcassets */,
 				24B839B51EF96ECE0096D6B9 /* Info.plist */,
@@ -287,7 +304,7 @@
 				};
 			};
 			buildConfigurationList = 24B839A11EF96ECE0096D6B9 /* Build configuration list for PBXProject "TweetJSON" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -313,7 +330,6 @@
 			files = (
 				24B839B41EF96ECE0096D6B9 /* LaunchScreen.storyboard in Resources */,
 				24B839B11EF96ECE0096D6B9 /* Assets.xcassets in Resources */,
-				244889D61F029B960034285B /* Twitter.blank.plist in Resources */,
 				24B839AF1EF96ECE0096D6B9 /* Main.storyboard in Resources */,
 				24B839E01EF96F780096D6B9 /* Twitter.plist in Resources */,
 			);
