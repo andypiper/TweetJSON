@@ -1,0 +1,24 @@
+fastlane_version "2.41.0"
+#xcversion(version: "8.3")
+
+default_platform :ios
+
+platform :ios do
+  lane :beta do |values|
+
+    changelog = prompt(text: "Changelog: ")
+
+    gym(scheme: 'TweetJSON', export_method: 'development')
+
+    emails = values[:test_email] ? values[:test_email] : nil # You can list more emails here
+    groups = values[:test_email] ? nil : nil # You can define groups on the web
+
+    crashlytics(   emails: emails,
+                   groups: groups,
+                    notes: changelog,
+            notifications: true) # Should this distribution notify your testers via email?
+
+    notification(title: 'TweetJSON', message: 'Your beta build is complete!')
+
+  end
+end

@@ -6,21 +6,21 @@
 //  Copyright © 2017 Andy Piper. All rights reserved.
 //
 
-// TODO: make get status options toggles
-// TODO: support user ID lookup as well
+// TODO: add toggles for get statuses/lookup options
+// TODO: support user ID lookup
 // TODO: refactor Tweet fetch code
 
 // TODO: share extension
 
 // TODO: clear screen
+// TODO: fix dynamic text size (needs to redraw)
 // TODO: syntax colour configuration
 // TODO: quick copy full JSON body to pasteboard
-
-// TODO: add Fastlane support
 
 import UIKit
 import TwitterKit
 import Highlightr
+import Crashlytics
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -30,6 +30,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Answers.logCustomEvent(withName: "Started",
+                               customAttributes: [:])
+
+        let readyText = "{ status: \"Ready to display response...\" }"
+        self.jsonBody.attributedText = self.highlightCode(code: readyText)
+
         tweetID.delegate = self
     }
     
@@ -53,6 +59,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func highlightCode( code: String ) -> NSAttributedString {
+        
+        // colour codes a piece of text passed in as a String
+        // returns an NSAttributedString with styling
+        
+        let highlightr = Highlightr()
+        highlightr?.setTheme(to: "github") // make configurable
+        let highlightedCode = highlightr?.highlight(code)
+
+        return highlightedCode!
+    }
+    
     func callApi() {
         
         // this all needs to be refactored into a separate function
@@ -69,8 +87,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
         
         client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+
+            // log that we ran a request metrics purposes
+            // (but NOT what we searched for, privacy)
+            // once refactored should measure Tweet vs User queries
+            Answers.logCustomEvent(withName: "Tweet query",
+                                           customAttributes: [:])
+            
             if connectionError != nil {
                 print("Error: \(String(describing: connectionError))")
+                Crashlytics.sharedInstance().recordError(connectionError!)
             }
             
             if data != nil {
@@ -80,18 +106,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     let jsonObj = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
                     let jsonString = NSString(data: jsonObj, encoding: String.Encoding.utf8.rawValue)
                     
-                    let highlightr = Highlightr()
-                    highlightr?.setTheme(to: "github")
-                    let highlightedCode = highlightr?.highlight(jsonString! as String)
-                    
-                    self.jsonBody.attributedText = highlightedCode
+                    self.jsonBody.attributedText = self.highlightCode(code: jsonString! as String)
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                     self.jsonBody.text = jsonError.localizedDescription
+                    Crashlytics.sharedInstance().recordError(jsonError)
                 }
 
             } else {
-                self.jsonBody.text = "no valid response from the API"
+                let statusText = "{ status: \"no valid response from API\" }"
+                self.jsonBody.attributedText = self.highlightCode(code: statusText)
+
             }
             
         }
